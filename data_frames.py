@@ -2,11 +2,17 @@ import pandas as pd
 from matplotlib import pyplot as plt
 
 vCaminhoTabela = r"data\indexdata.csv"
-dados = pd.read_csv(vCaminhoTabela)
+dados = pd.read_csv(vCaminhoTabela) #IMPORTAR CSV C/ TODAS AS COLUNAS
+# dados = pd.read_csv(vCaminhoTabela, usecols=['Index', 'Date', 'Close']) #IMPORTAR CSV APENAS COM COLUNAS ESPECIFICADAS
 
 #CRIAR UM DF APENAS COM AS COLUNAS ESPECIFICADAS
 df_cotacao = dados[['Index','Date','Close']] 
 # print(df_cotacao)
+
+#RENOMEAR COLUNAS
+# df_cotacao.rename(columns={'Date': 'dt_ini',
+#                            'Close': 'dt_fim'
+#                           }, inplace=True)
 
 #CRIAR UM DF APENAS COM OS REGISTROS ONDE O CAMPO INDEX SEJA DIFERENTE DE NYA
 df_cotacao_remover = df_cotacao.loc[(df_cotacao['Index'] != 'NYA')] 
